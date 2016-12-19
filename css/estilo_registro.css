@@ -1,0 +1,199 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+	margin:0; /*Para no guardar ningun margen en la pantalla*/
+	background-image: url("../images/azul3.jpg");  /*Imagen que queremos poner como fondo*/
+	background-size:cover; /*Para que la imagen no nos quede expandida y no centrada o en mosaico*/
+}
+
+ul.top { /*Barra de navegación superior*/
+    list-style-type: none;
+    margin: 0;
+    padding: 0; /*Sin relleno*/
+    overflow: hidden;
+    background-color: #4286f4; /*Color azul*/
+    position: fixed; /*Para que la barra siempre se quede 'anclada' en la misma posición*/
+    top: 0; /*Distancia entre el borde superior de la pantalla y la barra => 0*/
+	height: 12%;
+    width: 100%; /*Ocupar todo el ancho de pantalla*/
+	z-index: 1; /*Si se superponen elementos, la barra siempre 'por encima'*/
+}
+
+li  img{
+    float: left; /*Para situar el logo de la aplicación a la izda. en la barra superior*/
+}
+
+li a {
+	float: right; /*Situar los links en la parte derecha de la barra superior*/
+    display: block; 
+    color: white;
+	font-size: 120%;
+    text-align: center;
+    padding: 30px 20px; /*Relleno de cada elemento*/
+    text-decoration: none; /*Texto normal (sin negrita, subrayados, itálica,...)*/
+}
+
+li a:hover {
+    background-color: #1d5dc4; /*Para que al pasar con el cursor por encima del link se ponga negro*/
+}
+
+form {
+  position:relative;
+  top: 95px;
+  width: 500px;
+  margin:auto;
+  padding: 10px 20px;
+  background: rgb(192, 199, 211);
+  border-radius: 15px;
+}
+
+h2 {
+  text-align: center;
+  color:white;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+.button1 {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button1:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.number {
+  background-color: #5fcf80;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 100%;
+}
+
+
+/*Si el valor que el usuario escribe es valido, obtendra un color verde*/
+form input[type="email"]:required:valid{
+ border:2px solid green;
+ /* otras propiedades */
+}
+/*caso contrario, el color sera rojo*/
+form input[type="email"]:focus:required:invalid{
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+form input[type="password"]:required:valid{
+ border:2px solid green;
+ /* otras propiedades */
+}
+/*caso contrario, el color sera rojo*/
+form input[type="password"]:focus:required:invalid{
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+form input[type="text"]:required:valid{
+ border:2px solid green;
+ /* otras propiedades */
+}
+/*caso contrario, el color sera rojo*/
+form input[type="text"]:focus:required:invalid{
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+form input[type="tel"]:required:valid{
+ border:2px solid green;
+ /* otras propiedades */
+}
+/*caso contrario, el color sera rojo*/
+form input[type="tel"]:focus:required:invalid{
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+@media screen and (min-width: 480px) {
+
+  form {
+    max-width: 480px;
+  }
+
+}

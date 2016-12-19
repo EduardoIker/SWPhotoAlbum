@@ -1,0 +1,75 @@
+body {
+	margin:0; /*Para no guardar ningun margen en la pantalla*/
+	background-image: url("../images/azul3.jpg");  /*Imagen que queremos poner como fondo*/
+	background-size:cover; /*Para que la imagen no nos quede expandida y no centrada o en mosaico*/
+}
+
+
+/*Barra de navegaciÃƒÂ³n superior*/
+ul.top { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0; /*Sin relleno*/
+    overflow: hidden;
+    background-color:#4286f4; /*Color azul*/
+    position: fixed; /*Para que la barra siempre se quede 'anclada' en la misma posiciÃƒÂ³n*/
+    top: 0; /*Distancia entre el borde superior de la pantalla y la barra => 0*/
+    width: 100%; /*Ocupar todo el ancho de pantalla*/
+	z-index: 1; /*Si se superponen elementos, la barra siempre 'por encima'*/
+}
+
+li  img{
+    float: left; /*Para situar el logo de la aplicaciÃƒÂ³n a la izda. en la barra superior*/
+}
+
+li a {
+	float: right; /*Situar los links en la parte derecha de la barra superior*/
+    display: block; 
+    color: white;
+	font-size: 120%;
+    text-align: center;
+    padding: 33px 20px; /*Relleno de cada elemento*/
+    text-decoration: none; /*Texto normal (sin negrita, subrayados, itÃƒÂ¡lica,...)*/
+}
+
+li p { /*Texto "Te has identificado como: <@correo>" tras hacer login: texto en azul y centrado con respecto a los demÃƒÂ¡s elementos de la barra superior*/
+	float: right; 
+	color: yellow;
+	font-size: 110%;
+	margin-top: 0.9cm;
+	margin-right: 1cm;
+}
+
+li a.logout { /*Para que en texto del enlace Logout sea de color rojo*/
+	color: red;
+}
+
+li a:hover {
+    background-color: #1d5dc4; 
+}
+
+h3 {
+	color: white;
+}
+
+
+#foto{
+        text-align:center;
+        padding: 7px 7px 7px 7px;
+	position: relative; /*Tipo de posiciÃ³n relativa*/
+	top: 110px;
+        background-color:rgb(192, 199, 211);
+    border-radius: 15px; /*Para redondear las esquinas de la caja*/
+        width: 800px;
+    margin:auto;
+}
+
+img{
+    max-width: 700px;
+    max-height: 700px;
+}	
+
+.back{
+    width: 45px;
+    float: left;
+}

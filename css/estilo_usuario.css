@@ -1,0 +1,116 @@
+body {
+	margin:0; /*Para no guardar ningun margen en la pantalla*/
+	background-image: url("../images/azul3.jpg");  /*Imagen que queremos poner como fondo*/
+	background-size:cover; /*Para que la imagen no nos quede expandida y no centrada o en mosaico*/
+}
+
+
+/*Barra de navegaciÃ³n superior*/
+ul.top { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0; /*Sin relleno*/
+    overflow: hidden;
+    background-color:#4286f4; /*Color azul*/
+    position: fixed; /*Para que la barra siempre se quede 'anclada' en la misma posiciÃ³n*/
+    top: 0; /*Distancia entre el borde superior de la pantalla y la barra => 0*/
+    width: 100%; /*Ocupar todo el ancho de pantalla*/
+	z-index: 1; /*Si se superponen elementos, la barra siempre 'por encima'*/
+}
+
+li  img{
+    float: left; /*Para situar el logo de la aplicaciÃ³n a la izda. en la barra superior*/
+}
+
+li a {
+    float: right; /*Situar los links en la parte derecha de la barra superior*/
+    display: block; 
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    padding: 33px 20px; /*Relleno de cada elemento*/
+    text-decoration: none; /*Texto normal (sin negrita, subrayados, itÃ¡lica,...)*/
+}
+
+li p { /*Texto "Te has identificado como: <@correo>" tras hacer login: texto en azul y centrado con respecto a los demÃ¡s elementos de la barra superior*/
+	float: right; 
+	color: yellow;
+	font-size: 110%;
+	margin-top: 0.9cm;
+	margin-right: 1cm;
+}
+
+li a.logout { /*Para que en texto del enlace Logout sea de color rojo*/
+	color: red;
+}
+
+li a:hover {
+    background-color: #1d5dc4; 
+}
+
+table { 
+	background-color: rgb(192, 199, 211); /*Color gris de fondo con grado de opacidad 0.7*/
+	width: 600px; /*Anchura del form*/
+	position: relative; /*Tipo de posiciÃ³n absoluta*/
+	margin: auto;
+	text-align: center; 
+        border-collapse: collapse;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color:#4286f4;
+    color: white;
+}
+
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+h1, h2{
+    color:white;
+}
+#crearNuevo{
+        text-align:center;
+        padding: 7px 7px 7px 7px;
+    border-radius: 15px;
+	position: relative; /*Tipo de posición relativa*/
+	top: 110px;
+        background-color:rgb(192, 199, 211);
+        width: 300px;
+        margin: auto; /*Para centrarlo*/
+}
+
+#albumes{
+        text-align:center;
+    border-radius: 15px;
+        padding: 7px 7px 7px 7px;
+	position: relative; /*Tipo de posición relativa*/
+	top: 110px;
+        background-color:rgb(192, 199, 211);
+        width: 700px;
+    margin: auto; /*Para centrarlo*/
+}
+
+#submit {
+    padding: 3px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+#submit:hover {
+    background-color: #008CBA;
+    color: white;
+}

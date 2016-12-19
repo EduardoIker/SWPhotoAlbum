@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistemas Web">
+  <meta name="author" content="Iker y Eduardo">
+  <title> SW Photo Album </title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/animate.min.css" rel="stylesheet"> 
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+<body>
+  <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+
+  <header id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image: url(images/slider/1.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Bienvenido a <span>SW - Photo Album</span></h1>
+            <p class="animated fadeInRightBig">Crea tus albumes</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="registro.html">Comienza ahora</a>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(images/slider/2.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Bienvenido a <span>SW - Photo Album</span></h1>
+            <p class="animated fadeInRightBig">Sube tus fotos</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="registro.html">Comienza ahora</a>
+          </div>
+        </div>
+        <div class="item" style="background-image: url(images/slider/3.jpg)">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Bienvenido a <span>SW - Photo Album</span></h1>
+            <p class="animated fadeInRightBig">Compartelas</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="registro.html">Comienza ahora</a>
+          </div>
+        </div>
+      </div>
+      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+      <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+
+    </div><!--/#home-slider-->
+    <div class="main-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
+          </a>                    
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">                 
+            <li class="scroll"><a href="#home">Home</a></li>
+            <li class="scroll"><a href="#services">Servicios</a></li>                    
+            <li class="scroll"><a href="#team">Grupo</a></li>
+            <li class="scroll"><a href="#contact">Contacto</a></li>    
+            <li class="scroll"><a href="mostrar_fotos_anonimos.php">Ver fotos</a></li>  
+	    <li class="scroll"><a href="login.php">Login</a></li>  
+	    <li class="scroll"><a href="registro.html">Registrarse</a></li>  
+          </ul>
+        </div>
+      </div>
+    </div><!--/#main-nav-->
+  </header><!--/#home-->
+  
+  <section id="services">
+    <div class="container">
+      <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="row">
+          <div class="text-center col-sm-8 col-sm-offset-2">
+            <h2>Nuestros servicios</h2>
+            <p> En SW Photo Album podrás ...</p>
+          </div>
+        </div> 
+      </div>
+      <div class="text-center our-services">
+        <div class="row">
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="service-icon">
+              <i class="fa fa-camera"></i>
+            </div>
+            <div class="service-info">
+              <h3>Subir tus fotos</h3>
+              <p>Sube todas las fotos que quieras y organizalas a tu gusto en distintos albumes</p>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="450ms">
+            <div class="service-icon">
+              <i class="fa fa-share-alt"></i>
+            </div>
+            <div class="service-info">
+              <h3>Socializarte</h3>
+              <p>Conoce a otros usuarios que utilizan la aplicación y haz nuevas amistades</p>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+            <div class="service-icon">
+              <i class="fa fa-cloud"></i>
+            </div>
+            <div class="service-info">
+              <h3>Almacenar tus fotos</h3>
+              <p>Dispones de 2GB para almacenar tus fotos de manera permanente</p>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
+            <div class="service-icon">
+              <i class="fa fa-users"></i>
+            </div>
+			 <div class="service-info">
+              <h3>Compartir tus fotos</h3>
+              <p>Comparte tus fotos otros usuarios de la aplicación. No te preocupes por la seguridad, podrás elegir quien puede ver tus fotos y quién no</p>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="750ms">
+            <div class="service-icon">
+              <i class="fa fa-globe"></i>
+            </div>
+            <div class="service-info">
+              <h3>Acceder a tus fotos cuando quieras</h3>
+              <p>Tus fotos siempre estarán disponibles en tu cuenta, estés donde estés. Sólo necesitaras una equipo y una conexión a internet</p>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="850ms">
+            <div class="service-icon">
+              <i class="fa fa-bar-chart"></i>
+            </div>
+            <div class="service-info">
+              <h3>Ver estadísticas sobre tus fotos</h3>
+              <p>Podrás conocer la popularidad de tus fotos, con datos sobre cuantos usuarios han accedido a cada una de tus fotos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!--/#services-->
+
+  <section id="team">
+    <div class="container">
+      <div class="row">
+        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+          <h2>El Grupo</h2>
+          <p>Somos dos estudiantes del grado en Ingeniería Informática, en la especialidad de Ingeniería del Software</p>
+        </div>
+      </div>
+      <div class="team-members">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+              <div class="member-image">
+                <img class="img-responsive" src="images/team/1.jpg" alt="">
+              </div>
+              <div class="member-info">
+                <h3>Iker Otxoa</h3>
+                <h4>Estudiante</h4>
+                <p>Facultad de Informatica - UPV/EHU</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms">
+              <div class="member-image">
+                <img class="img-responsive" src="images/team/2.jpg" alt="">
+              </div>
+              <div class="member-info">
+                <h3>Eduardo Perez</h3>
+                <h4>Estudiante</h4>
+                <p>Facultad de Informatica - UPV/EHU</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>            
+    </div>
+  </section><!--/#team-->
+
+  <section id="contact">
+    <div id="google-map" class="wow fadeIn" data-latitude="43.3067187" data-longitude="-2.0099619" data-wow-duration="1000ms" data-wow-delay="400ms"></div>
+    <div id="contact-us" class="parallax">
+      <div class="container">
+        <div class="row">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2>Contacto</h2>
+            <p>Facultad de Informática de San Sebastián</p>
+          </div>
+        </div>
+        <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+          <div class="row">
+            <div class="col-sm-6">
+              <form id="main-contact-form" name="contact-form" method="post" action="sendemail.php">
+                <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control" placeholder="Nombre" required="required">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Dirección de Correo" required="required">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="subject" class="form-control" placeholder="Asunto..." required="required">
+                </div>
+                <div class="form-group">
+                  <textarea name="message" id="message" class="form-control" rows="4" placeholder="Introduce tu mensaje" required="required"></textarea>
+                </div>                        
+                <div class="form-group">
+                  <input type="submit" value="Enviar" class="btn-submit" />
+                </div>
+              </form>   
+            </div>
+            <div class="col-sm-6">
+              <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <p> Puedes ponerte en contacto con nosotros a través de los siguientes medios:</p>
+                <ul class="address">
+                  <li><i class="fa fa-map-marker"></i> <span> Dirección:</span> Manuel Lardizabal Ibilbidea, 1, 20018 Donostia, Gipuzkoa</li>
+                  <li><i class="fa fa-phone"></i> <span> Telefono:</span> 943 12 34 56  </li>
+                  <li><i class="fa fa-envelope"></i> <span> Email:</span> eduardoikersw@gmail.com</li>
+                  <li><i class="fa fa-globe"></i> <span> Sitio web (QUIZ):</span> <a href="http://www.eisw.hol.es">www.eisw.hol.es</a></li>
+                </ul>
+              </div>                            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>        
+  </section><!--/#contact-->
+  
+  <footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+      <div class="container text-center">
+        <div class="footer-logo">
+          <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>&copy; Iker y Eduardo</p>
+          </div>
+          <div class="col-sm-6">
+            <p class="pull-right"> Sistemas Web</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="js/jquery.inview.min.js"></script>
+  <script type="text/javascript" src="js/wow.min.js"></script>
+  <script type="text/javascript" src="js/mousescroll.js"></script>
+  <script type="text/javascript" src="js/smoothscroll.js"></script>
+  <script type="text/javascript" src="js/jquery.countTo.js"></script>
+  <script type="text/javascript" src="js/lightbox.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

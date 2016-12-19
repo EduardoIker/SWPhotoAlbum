@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+   <body background="images/azul3.jpg">
+      <head>
+         <meta charset="utf-8">
+         <link href="css/estilo_registro.css" rel="stylesheet" />
+         <title>REGISTRO</title>
+		 <script>
+               function archivo(evt) {
+                   var files = evt.target.files; // FileList object
+                   // Obtenemos la imagen del campo "file".
+                   for (var i = 0, f; f = files[i]; i++) {
+                     //Solo admitimos imágenes.
+                     if (!f.type.match('image.*')) {
+                         continue;
+                     }
+               
+                     var reader = new FileReader();
+               
+                     reader.onload = (function(theFile) {
+                         return function(e) {
+                           // Insertamos la imagen
+                          document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                         };
+                     })(f);
+               
+                     reader.readAsDataURL(f);
+                   }
+               }
+               
+               document.getElementById('files').addEventListener('change', archivo, false);
+			   
+			   function passwordIguales(){
+					var pass1=document.getElementById("pass1").value;
+					var pass2=document.getElementById("pass2").value;
+					if(pass1!=pass2){
+						alert("Las contraseñas introducidas deben de coincidir");
+						return false;
+					}
+					return true;
+			   }
+			   
+            </script>
+      </head>
+      <body>
+		<!-- Barra navegacion superior-->
+		<ul class="top">
+		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
+		  <li><a href="index.html">Inicio</a></li>
+		</ul>
+		
+		<!-- Formulario de registro -->
+         <form action="registrar.php" method="post" onSubmit="return passwordIguales();" oninput="range_control_value.value = range_control.valueAsNumber" enctype="multipart/form-data">
+            <p>
+            <h2>Registro en SW-Photo Album </h2>
+            <br />
+            Nombre y Apellidos(*): <input type="text" name="nombreyapellidos" pattern="[A-z]+([ ][A-z]+)+" placeholder="p. ej. Iñaki Urrutia García" autofocus required />
+            <br />
+            Direccion de Correo (*): <input type="email" name="correo" pattern="[0-z]+@[0-z]+\.[a-z]+" placeholder="p. ej. iñakiurrutia@correo.es" required>
+            <br />
+            Password (*): <input type="password" name="password" id="pass1"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" Title="La contraseña debe tener al menos 1 minuscula, 1 mayuscula, 1 digito y entre 6-8 caracteres" required />
+            <br />
+            Repite Password (*): <input type="password" name="rpassword"  id="pass2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,8}" Title="La contraseña debe tener al menos 1 minuscula, 1 mayuscula, 1 digito y entre 6-8 caracteres" required />
+            <br />
+            Numero de Teléfono (*): <input type="tel" name="numtelefono" pattern="[9|8|7|6]\d{8}" placeholder="p. ej. 943666111" required />
+            <br />
+            Seleccione una imagen de perfil (opcional) <br>
+            <input type="file" id="files" name="fotoperfil" />
+            <br />
+            <output id="list"></output>
+            <br />
+			<script>
+              function archivo(evt) {
+                  var files = evt.target.files; // FileList object
+             
+                  // Obtenemos la imagen del campo "file".
+                  for (var i = 0, f; f = files[i]; i++) {
+                    //Solo admitimos imágenes.
+                    if (!f.type.match('image.*')) {
+                        continue;
+                    }
+             
+                    var reader = new FileReader();
+             
+                    reader.onload = (function(theFile) {
+                        return function(e) {
+                          // Insertamos la imagen
+                         document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                        };
+                    })(f);
+             
+                    reader.readAsDataURL(f);
+                  }
+              }
+             
+              document.getElementById('files').addEventListener('change', archivo, false);
+      </script>
+            <center>
+               <input type="submit" class="button1" value="Enviar Datos" />
+               <br /><br />
+            </center>
+            </p>
+         </form>
+   </body>
+</html>
