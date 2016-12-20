@@ -8,28 +8,25 @@
 
 <!DOCTYPE html>
 <html>
-	  <head>
-		 <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
-		 <title>Albumes</title>
-		 <link rel="stylesheet" type="text/css" href="css/estilo_perfil.css"/>
-		 <script type="text/javascript" src="js/perfil.js"></script>
-	  </head>
-	  <body>
-	  
+	<head>
+		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<title>Albumes</title>
+		<link rel="stylesheet" type="text/css" href="css/estilo_perfil.css"/>
+		<script type="text/javascript" src="js/perfil.js"></script>
+	</head>
+	<body> 
 	    <!-- Barra navegacion superior-->
 		<ul class="top">
-		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
-		  <li><a class="logout" href="logout.php">Logout</a></li>
-		  <li><a href="usuario.php">Ver albumes</a></li>
-		  <li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
-		  <li><a href="perfil.php">Mi perfil</a></li>
-		  <li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
+			<li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
+			<li><a class="logout" href="logout.php">Logout</a></li>
+			<li><a href="usuario.php">Ver albumes</a></li>
+			<li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
+			<li><a href="perfil.php">Mi perfil</a></li>
+			<li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
 		</ul>
 		
-	  
-		  
         <div id="perfil">
-	         <h1>Mi Perfil</h1>
+	        <h1>Mi Perfil</h1>
 		    <?php
 				 #Conexión con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
@@ -39,8 +36,7 @@
 				}
 				
 				$correo=$_SESSION["correo"];
-
-				#Consulta de SQL: Obtener todos los albumes del usuario de la BD.		
+	
 				$sql="SELECT nombre_apellidos, telefono, ruta_img_perfil FROM USUARIOS WHERE correo='$correo'";
 				
 				if (!($result=mysqli_query($link ,$sql))){
@@ -67,8 +63,7 @@
 				
 				
 				$result->close();
-				#Cierre de la conexión con la BD.
-				mysqli_close($link);	   	   
+					   	   
 		    ?>
 			<input type="button" name="botonMostrarModificarDatos" id="botonMostrarModificarDatos" value="Modificar datos" onclick="mostrarModificarDatos()"/>
 			<input type="button" name="botonMostrarModificarContrasena" id="botonMostrarModificarContrasena" value="Modificar Contraseña" onclick="mostrarModificarContrasena()"/>
@@ -83,9 +78,38 @@
 				Repetir Nueva Contraseña: <input type="password" name="rPassNuevo" id="rPassNuevo"/> <br/>
 				<input type="button" name="botonModificarContrasena" id="botonModificarContrasena" value="Modificar Contraseña" onclick="modificarContrasena()"/>
 			</form>
-        </div>	
-		 
-	  </body>
+			</br>
+			<h3>Información sobre los albumes:</h3>
+			<table border="1">
+			<tr><th>Album</th><th>Numero de fotos</th></tr>
+			<?php
+				#Consulta de SQL: Obtener todos los albumes del usuario de la BD		
+				$sql="SELECT id, nombre FROM ALBUM WHERE correo='$correo'";
+				if (!($result=mysqli_query($link ,$sql))){
+					echo "<script>alert('Se ha producido un error desconocido. Intentalo de nuevo')</script>";
+					mysqli_close($link);
+					exit(1);
+				}
+				while($row=mysqli_fetch_array($result)){
+					$album=$row['nombre'];
+					$id_album=$row['id'];
+					echo "<tr><td>".$album."</td>";
+					$sql="SELECT COUNT(*) AS num FROM FOTO WHERE id_album='$id_album'";
+					if (!($result1=mysqli_query($link ,$sql))){
+						echo "<script>alert('Se ha producido un error desconocido. Intentalo de nuevo')</script>";
+						mysqli_close($link);
+						exit(1);
+					}
+					$row1=mysqli_fetch_array($result1);
+					$num_fotos=$row1['num'];
+					echo "<td>".$num_fotos."</td></tr>";
+				}
+				#Cierre de la conexión con la BD.
+				mysqli_close($link);	
+			?>
+			</table>
+        </div>		 
+	</body>
 </html>
 
 	

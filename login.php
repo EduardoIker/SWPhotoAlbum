@@ -13,8 +13,7 @@
 		  <li><a href="registro.html">Registrarse</a></li>
 		  <li><a href="index.html">Inicio</a></li>
 		</ul>
-		
-		
+
 		<!-- Formulario para login-->
 		<form method="post" action="login.php" onsubmit="return validarCamposLogin();" >
 			<div>
@@ -27,8 +26,7 @@
 				<br/>
 				<input type="submit" name="submit" id="submit" value="Entrar" />
 			</div>
-		</form>
-		
+		</form>	
 	</body>
 </html>
 
@@ -71,7 +69,7 @@
 		
 		if($cont==1){
 			$columna= mysqli_fetch_array($result);
-			$estado=$columna['estado'];
+			$estado=$columna['estado']; // Estado del usuario (activado/desactivado)
 			if($estado==1){
 				session_start();
 				$_SESSION["correo"]=$correo;

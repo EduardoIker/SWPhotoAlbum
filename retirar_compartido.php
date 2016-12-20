@@ -1,4 +1,4 @@
- <?php
+<?php
     if(isset($_GET['email'])){		
          session_start();
 		 if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")==0)){
@@ -37,5 +37,5 @@
 			exit(1);
 		}						
 		echo "Se ha retirado el acceso al usuario '$correo'";	
-     } 	   
+    } 	   
 ?>

@@ -1,18 +1,13 @@
- <?php
-session_start();
-if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")==0)){
-     header("Location: login.php");
-     exit();
-}
+<?php
+	session_start();
+	if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")==0)){
+		 header("Location: login.php");
+		 exit(1);
+	}
 
     if(isset ($_FILES["files"])){		
-                 session_start();
-		 if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")==0)){
-			header("Location: login.php");
-			exit();
-		 }  
-                $miCorreo=$_SESSION["correo"];		
-		 #Conexion con la BD
+        $miCorreo=$_SESSION["correo"];		
+		#Conexion con la BD
 		$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 		if(!$link){
 			echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
@@ -32,10 +27,8 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 			}	
 		$row = mysqli_fetch_array($result);
 		$nombreAlbum=$row['nombre'];
-		//obtenemos la cantidad de elementos que tiene el array
-                $total = count($_FILES["files"]["name"]);
-		
-		
+		#obtenemos la cantidad de elementos que tiene el array
+        $total = count($_FILES["files"]["name"]);
 		#Vamos guardando una a una las fotos en la base de datos
 		for ($i = 0; $i < $total; $i++){ 
 			$nombrefoto = $_FILES["files"]["name"][$i];
@@ -52,35 +45,35 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 ?>
 <!DOCTYPE html>
 <html>
-	  <head>
-		 <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
-		 <title>Albumes</title>
-		 <link rel="stylesheet" type="text/css" href="css/estilo_album.css"/>
-                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-                 <script type="text/javascript" src="http://www.w3resource.com/JSON/json.js"></script>  
-                 <script type="text/javascript" src="http://www.w3resource.com/JSON/jsonpath.js"></script>
-		 <script type="text/javascript" src="js/fotos.js" ></script>
-	  </head>
-	  <body>
-	  
-		<!-- Barra navegacion superior-->
+	<head>
+		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<title>Albumes</title>
+		<link rel="stylesheet" type="text/css" href="css/estilo_album.css"/>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+            <script type="text/javascript" src="http://www.w3resource.com/JSON/json.js"></script>  
+            <script type="text/javascript" src="http://www.w3resource.com/JSON/jsonpath.js"></script>
+		<script type="text/javascript" src="js/fotos.js" ></script>
+	</head>
+	<body>
+	<!-- Barra navegacion superior-->
 		<ul class="top">
-		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
-		  <li><a class="logout" href="logout.php">Logout</a></li>
-		  <li><a href="usuario.php">Ver albumes</a></li>
-		  <li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
-		  <li><a href="perfil.php">Mi perfil</a></li>
-		  <li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
+			<li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
+			<li><a class="logout" href="logout.php">Logout</a></li>
+			<li><a href="usuario.php">Ver albumes</a></li>
+			<li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
+			<li><a href="perfil.php">Mi perfil</a></li>
+			<li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
 		</ul>
 
         <div id="divSubirFotos">
-             <form id="subirFotos" action="mostrar_fotos.php" method="post" onsubmit="return subirFotos()" enctype="multipart/form-data">
-                   <h2>Subir fotos: </h2>
-                  <input type="file" id="files" name="files[]" multiple />
-                  <input type="submit" name="subir" id="subir" value="Subir fotos"/>
-                   <br/>
-                   <script> 
-                          function handleFileSelect(evt) {
+            <form id="subirFotos" action="mostrar_fotos.php" method="post" onsubmit="return subirFotos()" enctype="multipart/form-data">
+				<h2>Subir fotos: </h2>
+                <input type="file" id="files" name="files[]" multiple />
+                <input type="submit" name="subir" id="subir" value="Subir fotos"/>       
+                <br/>
+                <script> 
+							function handleFileSelect(evt) {
+                             document.getElementById("divFotosSeleccionadas").innerHTML="";
                              var files = evt.target.files; // FileList object
                             // Loop through the FileList and render image files as thumbnails.
                             for (var i = 0, f; f = files[i]; i++) {
@@ -95,13 +88,17 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
                                // Render thumbnail.
                                var span = document.createElement('span');
                                span.innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
-                               document.getElementById("divSubirFotos").appendChild(span);                                                     
+                               document.getElementById("divFotosSeleccionadas").appendChild(span);                                                     
                           };
                        })(f);
                                //creacion de formulario dinamico por cada foto elegida
                                var formf=document.createElement('FORM');
                                formf.name='form'+i;
                                formf.id='form'+i;
+                               var h = document.createElement("h3");
+                               var titulo = document.createTextNode("Foto "+(i+1));
+                               h.appendChild(titulo);
+                               formf.appendChild(h);
                                var nombref=document.createElement('INPUT');
 	                       nombref.type='TEXT';
                                nombref.name='nombre'+i;
@@ -137,29 +134,29 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
                                formf.appendChild(visibilidadf);
                                var br3= document.createElement("br");
                                formf.appendChild(br3);
-                               document.getElementById("divSubirFotos").appendChild(formf);
+                               document.getElementById("divFotosSeleccionadas").appendChild(formf);
                                document.getElementById("numFotos").value=i+1;
                      // Read in the image file as a data URL.
                       reader.readAsDataURL(f);
                     }
                    }
                   document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                  </script>
-                  <input type="hidden" id="numFotos" name="numFotos" value="0" />
-                  <input type="hidden" id="album" name="album" value="<?php echo $_POST[album]; ?>" />
-                  <input type="hidden" id="listaNombres" name="listaNombres" value="" />
-                  <input type="hidden" id="listaEtiquetas" name="listaEtiquetas" value="" />
-                  <input type="hidden" id="listaVisibilidad" name="listaVisibilidad" value="" />
-              </form>
-         </div>
-		 
-		 </br>
- 
+                </script>
+                <input type="hidden" id="numFotos" name="numFotos" value="0" />
+                <input type="hidden" id="album" name="album" value="<?php echo $_POST[album]; ?>" />
+                <input type="hidden" id="listaNombres" name="listaNombres" value="" />
+                <input type="hidden" id="listaEtiquetas" name="listaEtiquetas" value="" />
+                <input type="hidden" id="listaVisibilidad" name="listaVisibilidad" value="" />
+            </form>
+            <div id="divFotosSeleccionadas">
+            </div>
+        </div>
+		</br>
         <div id="fotos">
+            <a href="usuario.php"><img class="back" src="images/back.png" onclick="volver()"></a>
 			<img class="bin" src="images/bin.png"  onclick="eliminarAlbum(<?=$_POST['album']?>)"/>
-	         <h1>Fotos</h1>
-		     <?php
-					 #Conexión con la BD
+	        <?php
+					#Conexión con la BD
 					$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 					if(!$link){
 						echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
@@ -167,6 +164,18 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 					}
 					$album=$_POST['album'];
 					$correo=$_SESSION["correo"];
+					
+					#Consulta de SQL: Obtener el nombre del album.		
+					$sql="SELECT nombre FROM ALBUM WHERE id='$album'";
+					if (!($resultado=mysqli_query($link ,$sql))){
+						echo "<script>alert('Se ha producido un error desconocido. Intentalo de nuevo')</script>";
+						mysqli_close($link);
+						exit(1);
+					}
+					$fila=mysqli_fetch_array($resultado);
+					$NombreAlbum=$fila['nombre'];
+					
+					echo "<h1>".$NombreAlbum."</h1>";  
 
 					#Consulta de SQL: Obtener todas las fotos del album elegido de la BD.		
 					$sql="SELECT path, id FROM FOTO WHERE id_album='$album'";
@@ -205,15 +214,15 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 				 
 					#Cierre de la conexión con la BD.
 					mysqli_close($link);
-		     ?>
-
-                 <div id="divVerFoto" style="display:none">
-				<form method="post" action="mostrar_foto.php" id="verFoto">	
+		    ?>
+		</div>
+		
+        <div id="divVerFoto" style="display:none">
+			<form method="post" action="mostrar_foto.php" id="verFoto">	
 				<input type="text" name="foto" id="foto" />	
-				</form>
-	           <form method="post" action="usuario.php" id="volverAlbumes">							
-        	   </form>						
-			</form>		
-		 </div>		
-          </body>
+			</form>
+	        <form method="post" action="usuario.php" id="volverAlbumes">							
+        	</form>								
+		</div>		
+    </body>
 </html>	

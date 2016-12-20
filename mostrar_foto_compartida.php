@@ -6,28 +6,24 @@
 ?>
 <!DOCTYPE html>
 <html>
-	  <head>
-		 <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
-		 <title>Albumes</title>
-		 <link rel="stylesheet" type="text/css" href="css/estilo_ver_foto_anonimo.css"/>
-		  <!--<script type="text/javascript" src="js/xxxxx.js" ></script>-->
-	  </head>
-	  <body>
-	  
+	<head>
+		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<title>Albumes</title>
+		<link rel="stylesheet" type="text/css" href="css/estilo_ver_foto_anonimo.css"/>
+	</head>
+	<body>  
 	    <!-- Barra navegacion superior-->
 		<ul class="top">
-		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
-		  <li><a class="logout" href="logout.php">Logout</a></li>
-		  <li><a href="usuario.php">Ver albumes</a></li>
-		  <li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
-		  <li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
+			<li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
+			<li><a class="logout" href="logout.php">Logout</a></li>
+			<li><a href="usuario.php">Ver albumes</a></li>
+			<li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
+			<li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
 		</ul>
-			 
-			 
-	     <div id="foto">
-		 <img class="back" src="images/back.png" onclick="javascript:window.history.back();">
-		    <?php
-			    
+		
+	    <div id="foto">
+			<img class="back" src="images/back.png" onclick="javascript:window.history.back();">
+		    <?php  
                 #Conexion con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 				if(!$link){
@@ -58,7 +54,6 @@
 					exit(1);
 				}							  
 		    ?>
-	     </div> 
-		 
-	  </body>
+	    </div> 	 
+	</body>
 </html>

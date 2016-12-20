@@ -1,8 +1,8 @@
 <?php
-session_start();
-if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")!=0)){
-     header("Location: login.php");
-}
+	session_start();
+	if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")!=0)){
+		 header("Location: login.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,21 +24,20 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 		</ul>
 		
         <div id="albumes">
-                  <a href="gestion_archivos_administrador.php"><img class="back" src="images/back.png" onclick="volver()"></a>
-	         <h1>Albumes</h1>
+            <a href="gestion_archivos_administrador.php"><img class="back" src="images/back.png" onclick="volver()"></a>
+	        <h1>Albumes</h1>
 		    <?php
-				 #ConexiÃ³n con la BD
+				#Conexion con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 				if(!$link){
-				echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
+					echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
 					mysqli_close($link);
 				}
 				
 				$correo=$_POST["usuario"];
-
+				
 				#Consulta de SQL: Obtener todos los albumes del usuario de la BD.		
 				$sql="SELECT nombre, id FROM ALBUM WHERE correo='$correo'";
-				
 				if (!($result=mysqli_query($link ,$sql))){
 					echo "<script>alert('Se ha producido un error desconocido. Intentalo de nuevo')</script>";
 					mysqli_close($link);
@@ -74,13 +73,12 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 				#Cierre de la conexiÃ³n con la BD.
 				mysqli_close($link);	   	   
 		    ?>
-                 </div>
-	         <div id="divVerAlbum" style="display:none">
+        </div>
+	    <div id="divVerAlbum" style="display:none">
 			<form method="post" action="gestion_fotos_administrador.php" id="verAlbum">		
 				<input type="text" name="album" id="album" />
-                                <input type="hidden" name="usuario" id="usuario" value="<?=$_POST['usuario']?>"/> 				
+                <input type="hidden" name="usuario" id="usuario" value="<?=$_POST['usuario']?>"/> 				
 			</form>		
-		 </div>		
-		 
-	  </body>
+		</div>		 
+	</body>
 </html>

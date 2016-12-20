@@ -15,7 +15,7 @@
 	  </head>
 	  <body>
 	  
-		 <!-- Barra navegacion superior-->
+		<!-- Barra navegacion superior-->
 		<ul class="top">
 		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
 		  <li><a class="logout" href="logout.php">Logout</a></li>
@@ -27,11 +27,10 @@
 
 			    
 			 
-	       <div id="fotos">
-		   <h2> Fotos compartidas</h2>
+	    <div id="fotos">
+			<h2> Fotos compartidas</h2>
 		    <?php
-			    
-                #ConexiÃ³n con la BD
+                #Conexion con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 				if(!$link){
 				echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
@@ -39,7 +38,6 @@
 				}
 
 				#Consulta de SQL: Obtener el path de las fotos publicas de la BD.		
-				//$sql="SELECT email_propietario,nombre_apellidos, id_foto FROM COMPARTIDO, USUARIOS WHERE email_compartido='$_SESSION[correo]' AND email_propietario=correo GROUP BY email_propietario, id_foto";
 				$sql="SELECT DISTINCT email_propietario,nombre_apellidos FROM COMPARTIDO, USUARIOS WHERE email_compartido='$_SESSION[correo]' AND email_propietario=correo";
 				if (!($result=mysqli_query($link ,$sql))){
 					echo "<script>alert('Se ha producido un error desconocido1. Intentalo de nuevo')</script>";
@@ -91,10 +89,10 @@
 		    ?>
 	     </div> 
 		 
-		 <div id="divVerFoto" style="display:none">
+		<div id="divVerFoto" style="display:none">
 			<form method="post" id="verFoto" action="mostrar_foto_compartida.php">	
 				<input type="text" name="foto" id="foto" />			
 			</form>		
-		 </div>				 
+		</div>				 
 	  </body>
 </html>

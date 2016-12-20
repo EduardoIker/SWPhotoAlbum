@@ -1,46 +1,54 @@
- <?php
-session_start();
-if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")!=0)){
-     header("Location: login.php");
-     exit();
-}
+<?php
+	session_start();
+	if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")!=0)){
+		 header("Location: login.php");
+		 exit(1);
+	}
 ?>
 <!DOCTYPE html>
 <html>
-	  <head>
-		 <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
-		 <title>Albumes</title>
-		 <link rel="stylesheet" type="text/css" href="css/gestion_fotos_administrador.css"/>
-         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-		 <script type="text/javascript" src="js/gestion_fotos_administrador.js" ></script>
-	  </head>
-	  <body>
-	  
-  <!-- Barra navegacion superior-->
+	<head>
+		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<title>Albumes</title>
+		<link rel="stylesheet" type="text/css" href="css/gestion_fotos_administrador.css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<script type="text/javascript" src="js/gestion_fotos_administrador.js" ></script>
+	</head>
+	<body>
+		<!-- Barra navegacion superior-->
 		<ul class="top">
-		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
-		  <li><a class="logout" href="logout.php">Logout</a></li>
-		  <li><a href="administrador.php">Baja/Alta usuarios</a></li>
-		  <li><a href="gestion_archivos_administrador.php">Gestion Albumes/Fotos</a></li>
-		  <li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
+			<li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
+			<li><a class="logout" href="logout.php">Logout</a></li>
+			<li><a href="administrador.php">Baja/Alta usuarios</a></li>
+			<li><a href="gestion_archivos_administrador.php">Gestion Albumes/Fotos</a></li>
+			<li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
 		</ul>
 		
         <div id="fotos">
-                 <img class="back" src="images/back.png" onclick="volver()"/>
-				 <img class="bin" src="images/bin.png"  onclick="eliminarAlbum(<?=$_POST['album']?>)"/>
-	         <h1>Fotos</h1>
-		     <?php
-					 #ConexiÃ³n con la BD
+            <img class="back" src="images/back.png" onclick="volver()"/>
+			<img class="bin" src="images/bin.png"  onclick="eliminarAlbum(<?=$_POST['album']?>)"/>
+		    <?php
+					#Conexion con la BD
 					$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 					if(!$link){
 						echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
 						mysqli_close($link);
 					}
 					$album=$_POST['album'];
-
+					
+					#Consulta de SQL: Obtener el nombre del album.		
+					$sql="SELECT nombre FROM ALBUM WHERE id='$album'";
+					if (!($resultado=mysqli_query($link ,$sql))){
+						echo "<script>alert('Se ha producido un error desconocido. Intentalo de nuevo')</script>";
+						mysqli_close($link);
+						exit(1);
+					}
+					$fila=mysqli_fetch_array($resultado);
+					$nombreAlbum=$fila['nombre'];
+					echo "<h1>".$nombreAlbum."</h1>";  
+					
 					#Consulta de SQL: Obtener todas las fotos del album elegido de la BD.		
 					$sql="SELECT path, id FROM FOTO WHERE id_album='$album'";
-					
 					if (!($result=mysqli_query($link ,$sql))){
 						echo "<script>alert('Se ha producido un error desconocido. Intentalo de nuevo')</script>";
 						mysqli_close($link);
@@ -73,23 +81,23 @@ if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoa
 					
 					$result->close();
 				 
-					#Cierre de la conexiÃ³n con la BD.
+					#Cierre de la conexion con la BD.
 					mysqli_close($link);
-		     ?>
-
-          <div id="divVerFoto" style="display:none">
-			   <form method="post" action="gestion_foto_administrador.php" id="verFoto">	
-				    <input type="text" name="foto" id="foto" />	
-                                    <input type="hidden" name="album" id="album" value="<?=$_POST['album']?>"/>	
-                                    <input type="hidden" name="usuario" id="usuario" value="<?=$_POST['usuario']?>"/>					
-        	   </form>		
-     	 </div>		
+		    ?>
+		</div>
+		
+        <div id="divVerFoto" style="display:none">
+			<form method="post" action="gestion_foto_administrador.php" id="verFoto">	
+				<input type="text" name="foto" id="foto" />	
+                <input type="hidden" name="album" id="album" value="<?=$_POST['album']?>"/>	
+                <input type="hidden" name="usuario" id="usuario" value="<?=$_POST['usuario']?>"/>					
+        	</form>		
+     	</div>		
 		 
-		 <div id="divVolverAlbumes" style="display:none">
-	           <form method="post" action="gestion_albumes_administrador.php" id="volverAlbumes">	
-                       <input type="hidden" name="usuario" id="usuario" value="<?=$_POST['usuario']?>"/>						
-        	   </form>		
-     	 </div>	
-		 
+		<div id="divVolverAlbumes" style="display:none">
+	        <form method="post" action="gestion_albumes_administrador.php" id="volverAlbumes">	
+                <input type="hidden" name="usuario" id="usuario" value="<?=$_POST['usuario']?>"/>						
+        	</form>		
+     	</div>	 
     </body>
 </html>	

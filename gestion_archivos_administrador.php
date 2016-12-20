@@ -23,10 +23,9 @@
 		  <li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
 		</ul>
 		
-		
 		<!--Tabla de usuarios-->
 		<div class="tabla">
-                        <h2>Usuarios</h2>
+            <h2>Usuarios</h2>
 			<?php
 				#Conexión con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");

@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
-	  <head>
-		 <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
-		 <title>Albumes</title>
-		 <link rel="stylesheet" type="text/css" href="css/estilo_ver_foto_anonimo.css"/>
-		  <!--<script type="text/javascript" src="js/xxxxx.js" ></script>-->
-	  </head>
-	  <body>
-	  
-	      <!-- Barra navegacion superior-->
+	<head>
+		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<title>Albumes</title>
+		<link rel="stylesheet" type="text/css" href="css/estilo_ver_foto_anonimo.css"/>
+	</head>
+	<body>
+	    <!-- Barra navegacion superior-->
 		<ul class="top">
-		  <li><img src="images/logo.png" alt="Logo de la aplicacion SW Photo Album" /></li>
-		  <li><a href="index.html">Inicio</a></li>
-		  <li><a href="mostrar_fotos_anonimos.php">Ver fotos</a></li>
+			<li><img src="images/logo.png" alt="Logo de la aplicacion SW Photo Album" /></li>
+			<li><a href="index.html">Inicio</a></li>
+			<li><a href="mostrar_fotos_anonimos.php">Ver fotos</a></li>
 		</ul>
-			 
-			 
-	     <div id="foto">
+			 	 
+	    <div id="foto">
 			<img class="back" src="images/back.png" onclick="javascript:window.history.back();">
 		    <?php
-			    
-                #ConexiÃ³n con la BD
+                #Conexion con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 				if(!$link){
 				echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
@@ -50,7 +46,6 @@
 					exit(1);
 				}							  
 		    ?>
-	     </div> 
-		 
-	  </body>
+	    </div> 
+	</body>
 </html>

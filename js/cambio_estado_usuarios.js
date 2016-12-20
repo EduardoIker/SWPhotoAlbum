@@ -13,9 +13,30 @@
 				}
 				alert("Estado del usuario "+correo+" cambiado correctamente");
 			}else{
-				alert("Error al cambiar el estado del usuario "+correo+".Int�ntalo de nuevo");
+				alert("Error al cambiar el estado del usuario "+correo+".Intentalo de nuevo");
 			}
 		}
 	}
 	xhr.send(""); 
+}
+
+function eliminarUsuario(correo){
+	if(confirm("¿Seguro que deseas eliminar este usuario? Todos sus albumes, junto con sus fotos, serán borrados")==true){
+		//AJAX
+		var xhr= new XMLHttpRequest();
+		xhr.open("GET","eliminar_usuario.php?correo="+correo,true); 
+		document.getElementById("dvloader").style="display:inline";
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){ 
+				document.getElementById("dvloader").style="display:none";
+				if(xhr.responseText=="0"){
+					alert("El usuario "+correo+" ha sido eliminado correctamente");
+				}else{
+					alert("Error al eliminar el usuario "+correo+". Inténtalo de nuevo.");
+				}
+				window.location.replace("http://swphotoalbum.hol.es/Aplicacion/administrador.php");
+			}
+		}
+		xhr.send("");
+	}
 }

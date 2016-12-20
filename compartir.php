@@ -4,7 +4,8 @@
 		 if((!isset($_SESSION["correo"])) || (strcmp($_SESSION["correo"], "admin@swphotoalbum.es")==0)){
 			header("Location: login.php");
 			exit();
-		 }  
+		 }
+		 
          $miCorreo=$_SESSION["correo"];		
 		 #Conexion con la BD
 		$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");

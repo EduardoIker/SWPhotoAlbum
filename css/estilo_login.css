@@ -69,7 +69,7 @@ form span { /*Texto incluido en span a modo de etiqueta de elementos del formula
 }
 
 #submit {
-    padding: 16px 32px;
+    padding: 8px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

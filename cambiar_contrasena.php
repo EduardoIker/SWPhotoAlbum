@@ -3,7 +3,7 @@
 	
     if(isset($_GET['contrasena'])){		
        		 
-		 #Conexion con la BD
+		#Conexion con la BD
 		$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 		if(!$link){
 			echo 'Fallo al concectar a MySQL:' . $link->connect_error; 

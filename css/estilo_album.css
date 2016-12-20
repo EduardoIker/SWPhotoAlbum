@@ -5,21 +5,21 @@ body {
 }
 
 
-/*Barra de navegaciÃ³n superior*/
+/*Barra de navegacion superior*/
 ul.top { 
     list-style-type: none;
     margin: 0;
     padding: 0; /*Sin relleno*/
     overflow: hidden;
     background-color:#4286f4; /*Color azul*/
-    position: fixed; /*Para que la barra siempre se quede 'anclada' en la misma posiciÃ³n*/
+    position: fixed; /*Para que la barra siempre se quede 'anclada' en la misma posicion*/
     top: 0; /*Distancia entre el borde superior de la pantalla y la barra => 0*/
     width: 100%; /*Ocupar todo el ancho de pantalla*/
 	z-index: 1; /*Si se superponen elementos, la barra siempre 'por encima'*/
 }
 
 li  img{
-    float: left; /*Para situar el logo de la aplicaciÃ³n a la izda. en la barra superior*/
+    float: left; /*Para situar el logo de la aplicacion a la izda. en la barra superior*/
 }
 
 li a {
@@ -32,7 +32,7 @@ li a {
     text-decoration: none; /*Texto normal (sin negrita, subrayados, itÃ¡lica,...)*/
 }
 
-li p { /*Texto "Te has identificado como: <@correo>" tras hacer login: texto en azul y centrado con respecto a los demÃ¡s elementos de la barra superior*/
+li p { /*Texto "Te has identificado como: <@correo>" tras hacer login: texto en azul y centrado con respecto a los demas elementos de la barra superior*/
 	float: right; 
 	color: yellow;
 	font-size: 110%;
@@ -51,7 +51,7 @@ li a:hover {
 table { 
 	background-color: rgb(192, 199, 211); /*Color gris de fondo con grado de opacidad 0.7*/
 	width: 600px; /*Anchura del form*/
-	position: relative; /*Tipo de posiciÃ³n absoluta*/
+	position: relative; /*Tipo de posicion absoluta*/
 	margin: auto;
 	text-align: center; 
         border-collapse: collapse;
@@ -129,5 +129,9 @@ div img:hover:not(.bin) {
 .bin{
     width: 45px;
     float: right;
+}
+.back{
+    width: 45px;
+    float: left;
 }
   

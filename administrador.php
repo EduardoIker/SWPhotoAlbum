@@ -27,6 +27,7 @@
 		
 		<!-- Formulario para login-->
 		<div class="tabla">
+			<div style="display:none" id="dvloader"><img src="images/rolling.gif" /></div>
 			<h2>Usuarios</h2>
 			<?php
 				#Conexión con la BD
@@ -41,16 +42,17 @@
 				$usuarios = mysqli_query($link, "SELECT nombre_apellidos, correo, estado FROM USUARIOS WHERE correo <> 'admin@swphotoalbum.es'" );
 
 				#Creamos la tabla <html> donde queremos que se visualicen los usuarios.
-				echo '<table border=1 id="tablausuarios"> <tr> <th> NOMBRE </th> <th> CORREO </th>  <th> DAR DE ALTA/BAJA </th> </tr>';
+				echo '<table border=1 id="tablausuarios"> <tr> <th> NOMBRE </th> <th> CORREO </th>  <th> DAR DE ALTA/BAJA </th> <th> ELIMINAR </th> </tr>';
 
 				#Insertamos los datos de cada usuario (obtenidos tras la consulta) en la tabla creada anteriormente.
 				while ($row = mysqli_fetch_array( $usuarios )) {
 					$botonDarAlta="<input type=\"button\" id=\"".$row['correo']."\" value=\"Dar de Alta\" onclick=\"cambiarEstado('".$row['correo']."')\"/>";
 					$botonDarBaja="<input type=\"button\" id=\"".$row['correo']."\" value=\"Dar de Baja\" onclick=\"cambiarEstado('".$row['correo']."')\"/>";
+					$botonDelete="<input type=\"button\" id=\"eliminarUsuario\" value=\"Eliminar Usuario\" onclick=\"eliminarUsuario('".$row['correo']."')\"/>";
 					if($row['estado']==0){ 
-						echo '<tr><td>' . $row['nombre_apellidos'] . '</td> <td>' . $row['correo'] . '</td> <td>' . $botonDarAlta . '</td></tr>';
+						echo '<tr><td>' . $row['nombre_apellidos'] . '</td> <td>' . $row['correo'] . '</td> <td>' . $botonDarAlta . '</td> <td>'. $botonDelete .'</td></tr>';
 					}else{
-						echo '<tr><td>' . $row['nombre_apellidos'] . '</td> <td>' . $row['correo'] . '</td> <td>' . $botonDarBaja . '</td></tr>';
+						echo '<tr><td>' . $row['nombre_apellidos'] . '</td> <td>' . $row['correo'] . '</td> <td>' . $botonDarBaja .  '</td> <td>'. $botonDelete .'</td></tr>';
 					}
 				}
 				echo '</table>';

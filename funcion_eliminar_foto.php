@@ -1,4 +1,5 @@
 <?php 
+	// Función para eliminar una foto tanto de la BD como del servidor. Se supone que ya existe una conexión con la BD en $link
    function eliminar_foto($foto,$link){
 	   $sql="DELETE from ACCION WHERE id_foto='$foto'";
 		if (!($result=mysqli_query($link ,$sql))){

@@ -1,11 +1,12 @@
 <?php 
-	   #ConexiÃƒÂ³n con la BD
+		#Conexion con la BD
 		$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
 		if(!$link){
-		echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
+			echo 'Fallo al concectar a MySQL:' . $link->connect_error; 
 			mysqli_close($link);
 		}
-                $Etiqueta=$_GET['etiqueta'];
+		
+        $Etiqueta=$_GET['etiqueta'];
 		#Consulta de SQL: Obtener el path de las fotos publicas de la BD.		
 		$sql="SELECT path,id FROM FOTO WHERE visibilidad='publica' and etiquetas like '%$Etiqueta%'";
 		if (!($result=mysqli_query($link ,$sql))){

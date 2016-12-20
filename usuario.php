@@ -39,26 +39,24 @@ if(isset($_POST['nombre'])){
 ?>
 <!DOCTYPE html>
 <html>
-	  <head>
-		 <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
-		 <title>Albumes</title>
-		 <link rel="stylesheet" type="text/css" href="css/estilo_usuario.css"/>
-		 <script type="text/javascript" src="js/albumes.js" ></script>
-	  </head>
-	  <body>
-	  
+	<head>
+		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8"/>
+		<title>Albumes</title>
+		<link rel="stylesheet" type="text/css" href="css/estilo_usuario.css"/>
+		<script type="text/javascript" src="js/albumes.js" ></script>
+	</head>
+	<body> 
 	    <!-- Barra navegacion superior-->
 		<ul class="top">
-		  <li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
-		  <li><a class="logout" href="logout.php">Logout</a></li>
-		  <li><a href="usuario.php">Ver albumes</a></li>
-		  <li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
-		  <li><a href="perfil.php">Mi perfil</a></li>
-		  <li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
+			<li><img src="images/logo.png" alt="Logo de la aplicación SW Photo Album" /></li>
+			<li><a class="logout" href="logout.php">Logout</a></li>
+			<li><a href="usuario.php">Ver albumes</a></li>
+			<li><a href="fotos_compartidas.php">Ver fotos compartidas</a></li>
+			<li><a href="perfil.php">Mi perfil</a></li>
+			<li><p> Te has identificado como: <?=$_SESSION['correo']?></p></li>
 		</ul>
 		
-	  
-		  <div id="crearNuevo">
+		<div id="crearNuevo">
 		    <h2> Crear un nuevo album </h2>
 			<form method="post" action="usuario.php" onsubmit="return validarCrearAlbum();">	
 			    <span>Nombre: </span>
@@ -66,10 +64,10 @@ if(isset($_POST['nombre'])){
 				<br/>
 				<input type="submit" name="submit" id="submit" value="Crear" />			
 			</form>		
-		 </div>		
-		 </br>
-               <div id="albumes">
-	         <h1>Mis albumes</h1>
+		</div>		
+		</br>
+        <div id="albumes">
+			<h1>Mis albumes</h1>
 		    <?php
 				 #Conexión con la BD
 				$link = mysqli_connect("mysql.hostinger.es", "u307992971_root", "Informatica2016", "u307992971_swpa");
@@ -118,15 +116,11 @@ if(isset($_POST['nombre'])){
 				#Cierre de la conexión con la BD.
 				mysqli_close($link);	   	   
 		    ?>
-                 </div>
-	         <div id="divVerAlbum" style="display:none">
+        </div>
+	    <div id="divVerAlbum" style="display:none">
 			<form method="post" action="mostrar_fotos.php" id="verAlbum">		
 				<input type="text" name="album" id="album" />			
 			</form>		
-		 </div>		
-		 
-	  </body>
+		</div>		 
+	</body>
 </html>
-
-	
-	

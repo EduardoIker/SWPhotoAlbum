@@ -50,7 +50,7 @@ li a:hover {
 
 .tabla { 
 	background-color: rgb(192, 199, 211); /*Color gris de fondo con grado de opacidad 0.7*/
-	width: 550px; /*Anchura del form*/
+	width: 600px; /*Anchura del form*/
 	position: relative; /*Tipo de posición absoluta*/
 	top:150px; /*Distancia con respecto al borde superior*/
 	margin: auto;
@@ -96,5 +96,25 @@ input[type=button] {
 
 input[type=button]:hover {
     background-color: #008CBA;
+    color: white;
+}
+
+#eliminarUsuario {
+    padding: 2px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid red;
+}
+
+#eliminarUsuario:hover {
+    background-color: red;
     color: white;
 }
